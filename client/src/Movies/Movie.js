@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Route } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import MovieCard from './MovieCard'
 import axios from 'axios';
 
 const Movie = (props) => {
@@ -31,24 +32,7 @@ const Movie = (props) => {
   const { title, director, metascore, stars } = movie;
   return (
     <div className="save-wrapper">
-      <div className="movie-card">
-        <h2>{title}</h2>
-        <div className="movie-director">
-          Director: <em>{director}</em>
-        </div>
-        <div className="movie-metascore">
-          Metascore: <strong>{metascore}</strong>
-        </div>
-        <Route path='/movies/:id'>
-        <h3>Actors</h3>
-
-        {stars.map(star => (
-          <div key={star} className="movie-star">
-            {star}
-          </div>
-        ))}
-        </Route>
-      </div>
+      <MovieCard movie={movie} />
       <div className="save-button">Save</div>
     </div>
   );
